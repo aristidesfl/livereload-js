@@ -407,7 +407,8 @@
         liveImg: (_ref1 = message.liveImg) != null ? _ref1 : true,
         originalPath: message.originalPath || '',
         overrideURL: message.overrideURL || '',
-        serverURL: "http://" + this.options.host + ":" + this.options.port
+        serverURL: "http://" + this.options.host + ":" + this.options.port,
+        isChromeExtension: true
       });
     };
 
@@ -774,11 +775,19 @@
           return;
         }
       }
+      if (options.isChromeExtension) {
+        this.reloadChromeExtension;
+        return;
+      }
       return this.reloadPage();
     };
 
     Reloader.prototype.reloadPage = function() {
       return this.window.document.location.reload();
+    };
+
+    Reloader.prototype.reloadChromeExtension = function() {
+      return this.window.chrome.runtime.reload();
     };
 
     Reloader.prototype.reloadImages = function(path) {

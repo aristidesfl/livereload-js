@@ -95,6 +95,7 @@ exports.LiveReload = class LiveReload
       originalPath: message.originalPath || ''
       overrideURL: message.overrideURL || ''
       serverURL: "http://#{@options.host}:#{@options.port}"
+      isChromeExtension: yes
 
   performAlert: (message) ->
     alert message.message
